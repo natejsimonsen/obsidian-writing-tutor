@@ -1,1 +1,18 @@
-/* Writing Tutor uses native callouts; no custom styles needed. */
+.wt-root { padding: 0 var(--size-4-3); }
+.wt-header { display: flex; align-items: center; justify-content: space-between; gap: var(--size-4-2); margin-bottom: var(--size-4-2); }
+.wt-header h4 { margin: 0; }
+.wt-body h5 { margin: var(--size-4-3) 0 var(--size-4-1); }
+.wt-body ul { margin: 0; padding-left: 1.2em; }
+.wt-muted { color: var(--text-muted); }
+.wt-error { color: var(--text-error); white-space: pre-wrap; }
+.wt-loading { display: flex; align-items: center; gap: var(--size-4-1); color: var(--text-muted); }
+.wt-spin svg { animation: wt-spin 1s linear infinite; }
+@keyframes wt-spin { to { transform: rotate(360deg); } }
+.wt-original { color: var(--text-muted); white-space: pre-wrap; font-size: var(--font-smaller); }
+.wt-grade-row { display: flex; align-items: baseline; gap: var(--size-4-2); }
+.wt-grade { font-size: 1.6em; font-weight: 700; color: var(--text-accent); }
+.wt-summary { color: var(--text-normal); }
+.wt-diff { white-space: pre-wrap; line-height: 1.5; padding: var(--size-4-2); border-radius: var(--radius-s); background: var(--background-secondary); font-family: var(--font-text); }
+.wt-del { background: rgba(var(--color-red-rgb), 0.18); color: var(--text-error); text-decoration: line-through; }
+.wt-ins { background: rgba(var(--color-green-rgb), 0.18); color: var(--color-green); }
+.wt-actions { display: flex; gap: var(--size-4-2); margin-top: var(--size-4-2); flex-wrap: wrap; }

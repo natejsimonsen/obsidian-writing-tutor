@@ -14,13 +14,24 @@ The plugin shells out to the `claude` CLI in headless mode (`claude -p`) with a 
 
 ## Use
 
-- Select text, then run the command palette → **Grade selected text**, or right-click → **Grade with Writing Tutor**.
-- Bind a hotkey under Settings → Hotkeys if you want one.
-- Settings let you change the model, timeout, whether to include the surrounding note as context, and add standing instructions for the tutor.
+Select text, then fire the tutor one of these ways:
 
-## Output
+- Vim mode: visual-select and type `gvs` (configurable in settings).
+- Right-click → **Grade with Writing Tutor**.
+- Command palette → **Grade selected text (sidebar)**. Bind a hotkey if you like.
+- The **Grade selection** button in the sidebar.
 
-A callout is inserted after the selection:
+The sidebar opens on the right with the grade, a one-line summary, what works, what could be better, and the revised draft as a word diff (red strikethrough = removed, green = added). **Accept revision** replaces the original passage in the note. It refuses if the passage changed since grading. **Copy revision** puts the clean rewrite on the clipboard.
+
+Nothing runs in the background. The tutor only reads when you ask.
+
+### Vim note
+
+Vim's built-in `gv` fires the moment you type it, so `gvs` can't be reached unless `gv` is removed in visual mode. The plugin does that (normal-mode `gv` still works). Pick a different sequence in settings if you want visual-mode `gv` back.
+
+## Inline mode
+
+**Grade selected text (insert into note)** writes the feedback into the note instead:
 
 ```
 > [!tip] Writing tutor · Grade: B+

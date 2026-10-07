@@ -8,6 +8,7 @@ export interface WritingTutorSettings {
   extraInstructions: string;
   includeNoteContext: boolean;
   includeRevisedDraft: boolean;
+  vimKeys: string;
 }
 
 export const DEFAULT_SETTINGS: WritingTutorSettings = {
@@ -17,6 +18,7 @@ export const DEFAULT_SETTINGS: WritingTutorSettings = {
   extraInstructions: "",
   includeNoteContext: true,
   includeRevisedDraft: true,
+  vimKeys: "gvs",
 };
 
 export class WritingTutorSettingTab extends PluginSettingTab {
@@ -79,6 +81,17 @@ export class WritingTutorSettingTab extends PluginSettingTab {
         t.setValue(this.plugin.settings.includeRevisedDraft).onChange(async (v) => {
           this.plugin.settings.includeRevisedDraft = v;
           await this.plugin.saveSettings();
+        })
+      );
+
+    new Setting(containerEl)
+      .setName("Vim visual-mode keys")
+      .setDesc("Key sequence that grades the visual selection when vim mode is on. Default gvs. Clear to disable. If it starts with gv, the visual-mode gv command is replaced; normal-mode gv still works.")
+      .addText((t) =>
+        t.setValue(this.plugin.settings.vimKeys).onChange(async (v) => {
+          this.plugin.settings.vimKeys = v.trim();
+          await this.plugin.saveSettings();
+          this.plugin.reinstallVim();
         })
       );
 
