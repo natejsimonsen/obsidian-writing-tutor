@@ -29,7 +29,7 @@ export function installVimBinding(plugin: Plugin, keys: string, onFire: (view: M
     const view = plugin.app.workspace.getActiveViewOfType(MarkdownView);
     if (!view) return;
     onFire(view);
-    if (typeof vim.exitVisualMode === "function") vim.exitVisualMode(cm, false);
+    if (typeof vim.exitVisualMode === "function") vim.exitVisualMode(cm);
   });
 
   if (keys.startsWith("gv") && keys !== "gv") {
