@@ -2,6 +2,10 @@
 
 Highlight a passage, run **Grade selected text**, and Claude Code grades it, says what works, says what could be better, and appends an italicized revised draft.
 
+![Demo: select a paragraph, type gvs, review the diff, accept the revision](docs/demo.gif)
+
+[Higher-quality mp4](docs/demo.mp4)
+
 ## How it works
 
 The plugin shells out to the `claude` CLI in headless mode (`claude -p`) with a tutor system prompt and a JSON schema. Nothing is sent anywhere except through your existing Claude Code login. Tools and your Claude Code settings/CLAUDE.md files are disabled for the call, so the tutor only sees the passage.
