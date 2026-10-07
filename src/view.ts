@@ -38,6 +38,13 @@ export class WritingTutorView extends ItemView {
   setError(message: string) { this.state = { kind: "error", message }; this.render(); }
   clear() { this.state = { kind: "idle" }; this.render(); }
 
+  /** Apply the current revision, if there is one. Returns false if nothing to accept. */
+  acceptCurrent(): boolean {
+    if (this.state.kind !== "ready" || !this.state.critique.revised) return false;
+    this.accept(this.state.origin, this.state.critique.revised);
+    return true;
+  }
+
   private render() {
     const root = this.contentEl;
     root.empty();

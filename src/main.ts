@@ -37,6 +37,19 @@ export default class WritingTutorPlugin extends Plugin {
       },
     });
     this.addCommand({
+      id: "accept-revision",
+      name: "Accept revision from sidebar",
+      callback: async () => {
+        const v = await this.getView(false);
+        if (!v || !v.acceptCurrent()) new Notice("No revision to accept yet.");
+      },
+    });
+    this.addCommand({
+      id: "dismiss",
+      name: "Dismiss sidebar result",
+      callback: async () => { (await this.getView(false))?.clear(); },
+    });
+    this.addCommand({
       id: "open-sidebar",
       name: "Open Writing Tutor sidebar",
       callback: () => void this.getView(true),
